@@ -110,6 +110,8 @@ GEM
     erubi (1.13.1)
     et-orbi (1.4.0)
       tzinfo
+    faker (3.5.2)
+      i18n (>= 1.8.11, < 2)
     fugit (1.12.1)
       et-orbi (~> 1.4)
       raabro (~> 1.4)
@@ -155,6 +157,9 @@ GEM
     matrix (0.4.3)
     mini_mime (1.1.5)
     minitest (5.26.0)
+    minitest-power_assert (0.3.1)
+      minitest
+      power_assert (>= 1.1)
     msgpack (1.8.0)
     net-imap (0.5.12)
       date
@@ -193,6 +198,7 @@ GEM
     pg (1.6.2-aarch64-linux-musl)
     pg (1.6.2-x86_64-linux)
     pg (1.6.2-x86_64-linux-musl)
+    power_assert (3.0.1)
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
@@ -257,6 +263,7 @@ GEM
     reline (0.6.2)
       io-console (~> 0.5)
     rexml (3.4.4)
+    rollbar (3.6.2)
     rubocop (1.81.7)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
@@ -281,10 +288,6 @@ GEM
       rack (>= 1.1)
       rubocop (>= 1.75.0, < 2.0)
       rubocop-ast (>= 1.44.0, < 2.0)
-    rubocop-rails-omakase (1.1.0)
-      rubocop (>= 1.72)
-      rubocop-performance (>= 1.24)
-      rubocop-rails (>= 2.30)
     ruby-progressbar (1.13.0)
     rubyzip (3.2.2)
     securerandom (0.4.1)
@@ -294,6 +297,17 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 4.0)
       websocket (~> 1.0)
+    slim (5.2.1)
+      temple (~> 0.10.0)
+      tilt (>= 2.1.0)
+    slim-rails (3.7.0)
+      actionpack (>= 3.1)
+      railties (>= 3.1)
+      slim (>= 3.0, < 6.0, != 5.0.0)
+    slim_lint (0.33.0)
+      rexml (~> 3.2)
+      rubocop (>= 1.0, < 2.0)
+      slim (>= 3.0, < 6.0)
     solid_cable (3.0.12)
       actioncable (>= 7.2)
       activejob (>= 7.2)
@@ -326,10 +340,12 @@ GEM
     stimulus-rails (1.3.4)
       railties (>= 6.0.0)
     stringio (3.1.7)
+    temple (0.10.4)
     thor (1.4.0)
     thruster (0.1.16)
     thruster (0.1.16-aarch64-linux)
     thruster (0.1.16-x86_64-linux)
+    tilt (2.6.1)
     timeout (0.4.4)
     tsort (0.2.0)
     turbo-rails (2.0.20)
@@ -372,15 +388,22 @@ DEPENDENCIES
   capybara
   cssbundling-rails
   debug
+  faker
   jbuilder
   jsbundling-rails
   kamal
+  minitest-power_assert
   pg
   propshaft
   puma (>= 5.0)
   rails (~> 8.0.2, >= 8.0.2.1)
-  rubocop-rails-omakase
+  rollbar
+  rubocop
+  rubocop-performance
+  rubocop-rails
   selenium-webdriver
+  slim-rails
+  slim_lint
   solid_cable
   solid_cache
   solid_queue
@@ -388,7 +411,6 @@ DEPENDENCIES
   stimulus-rails
   thruster
   turbo-rails
-  tzinfo-data
   web-console
 
 BUNDLED WITH
