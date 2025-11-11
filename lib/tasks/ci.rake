@@ -29,3 +29,17 @@ namespace :ci do
     puts '✅ Tests passed!'
   end
 end
+
+# # Локальный запуск CI проверок
+# bundle exec rake ci:all
+
+# # Только линтинг
+# bundle exec rake ci:lint
+
+# # Только тесты
+# bundle exec rake ci:test
+
+# # Запуск отдельных линтеров
+# bundle exec rubocop
+# bundle exec rubocop -a  # автоисправление
+# bundle exec slim-lint app/views
