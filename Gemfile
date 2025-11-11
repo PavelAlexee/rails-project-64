@@ -20,6 +20,7 @@ gem 'kamal', require: false
 
 gem 'thruster', require: false
 
+gem 'devise'
 gem 'faker'
 gem 'slim-rails'
 
