@@ -17,13 +17,20 @@ html
     - # Includes all stylesheet files in app/assets/stylesheets
     = stylesheet_link_tag :app, "data-turbo-track": "reload"
     = javascript_include_tag "application", "data-turbo-track": "reload", type: "module"
-    body
-      = render "shared/nav"
+    body.d-flex.flex-column.h-100
+      header
+        = render "shared/nav"
       
-    .container.mt-4
-      - if notice
-        .alert.alert-success = notice
-      - if alert
-        .alert.alert-danger = alert
+      main.flex-shrink-0.w-100
+        .container  
+          .container.mt-4
+            - if notice
+              .alert.alert-success = notice
+            - if alert
+              .alert.alert-danger = alert
 
-      = yield
+          = yield
+      
+      footer.footer.mt-auto.py-3.bg-light
+        .container
+          = render "shared/footer"

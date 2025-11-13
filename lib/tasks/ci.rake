@@ -17,6 +17,9 @@ namespace :ci do
     puts 'Running Rubocop...'
     sh 'bundle exec rubocop'
 
+    puts 'Running Rubocop auto-correct...'
+    sh 'bundle exec rubocop -a '
+
     puts 'Running Slim-Lint...'
     sh 'bundle exec slim-lint app/views'
 
@@ -29,17 +32,3 @@ namespace :ci do
     puts '✅ Tests passed!'
   end
 end
-
-# # Локальный запуск CI проверок
-# bundle exec rake ci:all
-
-# # Только линтинг
-# bundle exec rake ci:lint
-
-# # Только тесты
-# bundle exec rake ci:test
-
-# # Запуск отдельных линтеров
-# bundle exec rubocop
-# bundle exec rubocop -a  # автоисправление
-# bundle exec slim-lint app/views
