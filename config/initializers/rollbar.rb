@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # config/initializers/rollbar.rb
 
 # Загружаем Rollbar только если гем доступен

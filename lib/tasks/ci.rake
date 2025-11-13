@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :ci do
   desc 'Run all CI checks (lint + test)'
   task all: :environment do
@@ -18,7 +20,7 @@ namespace :ci do
     sh 'bundle exec rubocop'
 
     puts 'Running Rubocop auto-correct...'
-    sh 'bundle exec rubocop -a '
+    sh 'bundle exec rubocop -A'
 
     puts 'Running Slim-Lint...'
     sh 'bundle exec slim-lint app/views'
