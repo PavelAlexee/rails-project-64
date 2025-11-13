@@ -17,5 +17,13 @@ html
     - # Includes all stylesheet files in app/assets/stylesheets
     = stylesheet_link_tag :app, "data-turbo-track": "reload"
     = javascript_include_tag "application", "data-turbo-track": "reload", type: "module"
-  body
-    = yield
+    body
+      = render "shared/nav"
+      
+    .container.mt-4
+      - if notice
+        .alert.alert-success = notice
+      - if alert
+        .alert.alert-danger = alert
+
+      = yield
