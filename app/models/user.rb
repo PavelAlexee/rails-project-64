@@ -7,4 +7,6 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :email, uniqueness: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+
+  has_many :posts, dependent: :destroy
 end
