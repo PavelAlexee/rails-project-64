@@ -11,11 +11,10 @@
 bundle install
 
 # Запуск линтеров
-bundle exec rubocop
-bundle exec slim-lint app/views
+bundle exec rake ci:lint
 
 # Запуск тестов
-bundle exec rails test
+bundle exec rake ci:test
 
 # Полная проверка CI
 bundle exec rake ci:all
