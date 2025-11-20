@@ -1,38 +1,156 @@
-require "test_helper"
+# test/controllers/posts_controller_test.rb
+require 'test_helper'
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
-  test "should get index" do
-    get posts_index_url
+  include Devise::Test::IntegrationHelpers
+
+  setup do
+    # Используем фикстуры вместо создания объектов
+    @category = categories(:one)
+    @user = users(:one)
+    @post = posts(:one)
+  end
+
+  # SHOW ACTION
+  test 'should show post' do
+    get post_path(@post)
     assert_response :success
   end
 
-  test "should get show" do
-    get posts_show_url
-    assert_response :success
+  # NEW ACTION
+  test 'should redirect new when not authenticated' do
+    get new_post_path
+    assert_redirected_to new_user_session_path
   end
 
-  test "should get new" do
-    get posts_new_url
+  test 'should get new when authenticated' do
+    sign_in @user
+    get new_post_path
+
     assert_response :success
+    assert { assigns(:post).is_a?(Post) }
+    assert { assigns(:post).new_record? }
+    assert { assigns(:categories).include?(@category) }
   end
 
-  test "should get create" do
-    get posts_create_url
-    assert_response :success
+  # EDIT ACTION
+  test 'should redirect edit when not authenticated' do
+    get edit_post_path(@post)
+    assert_redirected_to new_user_session_path
   end
 
-  test "should get edit" do
-    get posts_edit_url
+  test 'should get edit when authenticated' do
+    sign_in @user
+    get edit_post_path(@post)
+
     assert_response :success
+    assert { assigns(:post) == @post }
+    assert { assigns(:categories).include?(@category) }
   end
 
-  test "should get update" do
-    get posts_update_url
-    assert_response :success
+  # CREATE ACTION
+  test 'should redirect create when not authenticated' do
+    assert_no_difference('Post.count') do
+      post posts_path, params: {
+        post: {
+          title: 'New Post',
+          body: 'New post body with enough characters',
+          category_id: @category.id
+        }
+      }
+    end
+    assert_redirected_to new_user_session_path
   end
 
-  test "should get destroy" do
-    get posts_destroy_url
-    assert_response :success
+  test 'should create post with valid params' do
+    sign_in @user
+
+    assert_difference('Post.count', 1) do
+      post posts_path, params: {
+        post: {
+          title: 'New Post Title',
+          body: 'New post body content here with enough characters',
+          category_id: @category.id
+        }
+      }
+    end
+
+    assert_redirected_to post_path(Post.last)
+    assert { Post.last.creator == @user }
+    assert { Post.last.title == 'New Post Title' }
+  end
+
+  test 'should not create post with invalid params' do
+    sign_in @user
+
+    assert_no_difference('Post.count') do
+      post posts_path, params: {
+        post: {
+          title: '',
+          body: 'short',
+          category_id: @category.id
+        }
+      }
+    end
+
+    assert_response :unprocessable_entity
+    assert { assigns(:categories).include?(@category) }
+  end
+
+  # UPDATE ACTION
+  test 'should redirect update when not authenticated' do
+    patch post_path(@post), params: {
+      post: { title: 'Updated Title' }
+    }
+
+    assert_redirected_to new_user_session_path
+    assert { @post.reload.title == 'First Post' } # Исправлено на фикстуру
+  end
+
+  test 'should update post with valid params' do
+    sign_in @user
+
+    patch post_path(@post), params: {
+      post: {
+        title: 'Updated Title',
+        body: 'Updated body content here with enough characters'
+      }
+    }
+
+    assert_redirected_to post_path(@post)
+    assert { @post.reload.title == 'Updated Title' }
+  end
+
+  test 'should not update post with invalid params' do
+    sign_in @user
+
+    patch post_path(@post), params: {
+      post: {
+        title: '',
+        body: 'short'
+      }
+    }
+
+    assert_response :unprocessable_entity
+    assert { assigns(:categories).include?(@category) }
+  end
+
+  # DESTROY ACTION
+  test 'should redirect destroy when not authenticated' do
+    assert_no_difference('Post.count') do
+      delete post_path(@post)
+    end
+
+    assert_redirected_to new_user_session_path
+  end
+
+  test 'should destroy post' do
+    sign_in @user
+
+    assert_difference('Post.count', -1) do
+      delete post_path(@post)
+    end
+
+    assert_redirected_to root_path
   end
 end

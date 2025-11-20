@@ -1,2 +1,9 @@
-h1 Posts#new
-p Find me in app/views/posts/new.html.slim
+.container.my-4
+  h1.mb-4 Новый пост
+
+  = render 'form'
+
+  = link_to 'Назад', root_path, class: 'btn btn-outline-primary mt-3'
+
+
+

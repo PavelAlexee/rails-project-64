@@ -8,5 +8,5 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
-  has_many :posts, dependent: :destroy
+  has_many :posts, foreign_key: 'creator_id', dependent: :destroy
 end

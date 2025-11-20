@@ -1,27 +1,30 @@
 nav.navbar.navbar-expand-lg.navbar-light.bg-light
   .container
-    a.navbar-brand href=root_path The Hexlet Blog
+    a.navbar-brand The Hexlet Blog
     
     
     .collapse.navbar-collapse
       ul.navbar-nav.me-auto
         li.nav-item
-          = link_to "Home", root_path, class: "nav-link"
-        - if user_signed_in?
-          li.nav-item
-            = link_to "Home", root_path, class: "nav-link"
+          = link_to "Главная", root_path, class: "nav-link"
+          - if user_signed_in?
+            li.nav-item
+              = link_to "Создать новый пост", new_post_path, class: "nav-link"
       
-      ul.navbar-nav
+      ul.navbar-nav.align-items-center
         - if user_signed_in?
           li.nav-item
             span.navbar-text.me-3
-              | Welcome, #{current_user.first_name || current_user.email}
+              | Добро пожаловать, #{current_user.first_name || current_user.email}
           li.nav-item
-            = link_to "Edit profile", edit_user_registration_path, class: "nav-link"
+            = link_to "Изменить профиль", edit_user_registration_path, class: "nav-link"
           li.nav-item
-            = link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link"
+            = button_to "Выйти", destroy_user_session_path, 
+                        method: :delete, 
+                        class: "btn btn-link nav-link", 
+                        form_class: "d-inline"        
         - else
           li.nav-item
-            = link_to "Sign up", new_user_registration_path, class: "nav-link"
+            = link_to "Зарегистрироваться", new_user_registration_path, class: "nav-link"
           li.nav-item
-            = link_to "Login", new_user_session_path, class: "nav-link"
+            = link_to "Войти", new_user_session_path, class: "nav-link"

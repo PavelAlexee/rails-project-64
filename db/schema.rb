@@ -41,5 +41,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_13_194127) do
   end
 
   add_foreign_key "posts", "categories"
-  add_foreign_key "posts", "creators"
+  add_foreign_key "posts", "users", column: "creator_id"
 end

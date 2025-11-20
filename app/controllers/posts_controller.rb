@@ -1,11 +1,6 @@
-# app/controllers/posts_controller.rb
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: %i[index show]
+  before_action :authenticate_user!, except: %i[show]
   before_action :set_post, only: %i[show edit update destroy]
-
-  def index
-    @posts = Post.includes(:category, :creator).order(created_at: :desc)
-  end
 
   def show
   end
@@ -41,7 +36,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to posts_url, notice: 'Post was successfully destroyed.'
+    redirect_to root_path, notice: 'Post was successfully destroyed.'
   end
 
   private

@@ -1,28 +1,46 @@
-h2
-  | Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :first_name
-    br
-    = f.text_field :first_name, autofocus: true, autocomplete: "first_name"
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      em
-        | (
-        = @minimum_password_length
-        |  characters minimum)
-    br
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    br
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign up"
+.container
+  .row.justify-content-center
+    .col-md-6.col-lg-4
+      .card.mt-5
+        .card-body
+          h2.h3.mb-4.fw-normal.text-center Регистрация
 
+          = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+            = render "devise/shared/error_messages", resource: resource
+
+            .form-floating.mb-3
+              = f.text_field :first_name, 
+                            autofocus: true, 
+                            autocomplete: "first_name", 
+                            class: "form-control", 
+                            id: "floatingFirstName"
+              = f.label :first_name, "Имя", for: "floatingFirstName"
+
+            .form-floating.mb-3
+              = f.email_field :email, 
+                            autocomplete: "email", 
+                            class: "form-control", 
+                            id: "floatingEmail"
+              = f.label :email, for: "floatingEmail"
+
+            .form-floating.mb-3
+              = f.password_field :password, 
+                                autocomplete: "new-password", 
+                                class: "form-control", 
+                                id: "floatingPassword",
+                                placeholder: "Password"
+              = f.label :password, "Пароль", for: "floatingPassword"
+              - if @minimum_password_length
+                .form-text
+                  = "(минимум #{@minimum_password_length} знаков)"
+
+            .form-floating.mb-4
+              = f.password_field :password_confirmation, 
+                                autocomplete: "new-password", 
+                                class: "form-control", 
+                                id: "floatingPasswordConfirmation",
+                                placeholder: "Password confirmation"
+              = f.label :password_confirmation, "Подтверждение пароля", for: "floatingPasswordConfirmation"
+
+            = f.submit "Регистрация", class: "w-100 btn btn-lg btn-primary mb-3"
+            
