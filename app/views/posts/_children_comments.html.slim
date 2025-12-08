@@ -1,0 +1,14 @@
+- comment.children.each do |child_comment|
+  .card.ms-4.border-end-0.border-bottom-0.border-top-1.rounded-0 id="comment-#{child_comment.id}"
+    .card-header.border-0
+      span.me-2
+        = child_comment.user.email
+      span.fs-6.text-muted
+        = l(child_comment.created_at, format: :short)
+    .card-body.border-0
+      p.card-text = child_comment.content
+    .card-footer.border-0
+      - if user_signed_in?
+        = render 'posts/comment_form', comment: child_comment
+    - if child_comment.children.any?
+      = render 'posts/children_comments', comment: child_comment
