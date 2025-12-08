@@ -9,11 +9,10 @@
         p.card-text = truncate(post.body, length: 150)
         .d-flex.justify-content-between.align-items-center
           small.text-muted
-            | Категория: #{post.category.name} | 
-            | Автор: #{post.creator.first_name} | 
+            | Категория: #{post.category.name} |
+            | Автор: #{post.creator.first_name} |
             | Создано: #{((Time.now - post.created_at) / 60).to_i} минут назад
           = link_to 'Читать', post, class: 'btn btn-outline-primary btn-sm'
-  
 - else
   .alert.alert-info
     h4 Сейчас постов нет!
@@ -22,4 +21,3 @@
       = link_to 'Создать первую статью', new_post_path, class: 'btn btn-primary'
     - else
       p Зарегистрируйся чтобы написать свою первую статью!
-

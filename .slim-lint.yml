@@ -4,6 +4,9 @@ exclude:
   - 'db/schema.rb'
   - "bin/**"
   - "db/migrate/**"
+  - 'app/views/devise/**' 
+  - 'app/views/layouts/mailer.html.slim'
+  - 'app/views/pwa/**/*'
 
 
 linters:
@@ -18,3 +21,9 @@ linters:
 
   RedundantDiv:
     enabled: true
+  
+  CommentControlStatement:
+    enabled: false  
+  
+  RuboCop:
+    enabled: false

@@ -1,0 +1,24 @@
+root_comment:
+  content: This is a root comment
+  user: one
+  post: one
+  ancestry: "" 
+
+with_comments:
+  content: This is a comment that will have replies
+  user: one
+  post: one
+  ancestry: ""
+
+nested:
+  content: This is a reply to with_comments
+  user: two
+  post: one
+  ancestry: <%= ActiveRecord::FixtureSet.identify(:with_comments).to_s %>
+
+deep_nested:
+  content: This is a deep nested reply
+  user: one
+  post: one
+  ancestry: <%= ActiveRecord::FixtureSet.identify(:with_comments).to_s %>/<%= ActiveRecord::FixtureSet.identify(:nested).to_s %>
+  

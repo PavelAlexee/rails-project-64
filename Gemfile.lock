@@ -74,6 +74,8 @@ GEM
       uri (>= 0.13.1)
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
+    ancestry (4.3.3)
+      activerecord (>= 5.2.6)
     ast (2.4.3)
     base64 (0.3.0)
     bcrypt (3.1.20)
@@ -293,6 +295,10 @@ GEM
     rubocop-ast (1.47.1)
       parser (>= 3.3.7.2)
       prism (~> 1.4)
+    rubocop-minitest (0.38.2)
+      lint_roller (~> 1.1)
+      rubocop (>= 1.75.0, < 2.0)
+      rubocop-ast (>= 1.38.0, < 2.0)
     rubocop-performance (1.26.1)
       lint_roller (~> 1.1)
       rubocop (>= 1.75.0, < 2.0)
@@ -312,6 +318,9 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 4.0)
       websocket (~> 1.0)
+    simple_form (5.4.0)
+      actionpack (>= 7.0)
+      activemodel (>= 7.0)
     slim (5.2.1)
       temple (~> 0.10.0)
       tilt (>= 2.1.0)
@@ -400,6 +409,7 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
+  ancestry
   bootsnap
   brakeman
   capybara
@@ -418,9 +428,11 @@ DEPENDENCIES
   rails-controller-testing
   rollbar
   rubocop
+  rubocop-minitest
   rubocop-performance
   rubocop-rails
   selenium-webdriver
+  simple_form
   slim-rails
   slim_lint
   solid_cable

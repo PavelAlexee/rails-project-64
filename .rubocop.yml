@@ -1,20 +1,28 @@
 require:
   - rubocop-rails
   - rubocop-minitest
-  - rubocop-power_assert
+  - rubocop-performance
+
 
 AllCops:
   DisplayCopNames: true
   Exclude:
     - "bin/**"
-    - "db/schema.rb"
-    - "db/migrate/**"
+    - "db/**/*"
     - "vendor/**/*"
     - "node_modules/**/*"
+    - "config/**/*"
+    - "tmp/**/*"
   NewCops: enable
 
 Layout/LineLength:
   Enabled: false
+
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false
+  
+Minitest/MultipleAssertions:
+  Max: 5 
 
 Metrics/AbcSize:
   Enabled: false
@@ -36,10 +44,6 @@ Metrics/PerceivedComplexity:
 
 Rails:
   Enabled: true
-
-require:
-  - rubocop-performance
-  - rubocop-rails
 
 Style/AsciiComments:
   Enabled: false

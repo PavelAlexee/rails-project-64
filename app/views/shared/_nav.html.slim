@@ -1,8 +1,7 @@
 nav.navbar.navbar-expand-lg.navbar-light.bg-light
   .container
     a.navbar-brand The Hexlet Blog
-    
-    
+
     .collapse.navbar-collapse
       ul.navbar-nav.me-auto
         li.nav-item
@@ -10,7 +9,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
           - if user_signed_in?
             li.nav-item
               = link_to "Создать новый пост", new_post_path, class: "nav-link"
-      
+
       ul.navbar-nav.align-items-center
         - if user_signed_in?
           li.nav-item
@@ -19,10 +18,10 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
           li.nav-item
             = link_to "Изменить профиль", edit_user_registration_path, class: "nav-link"
           li.nav-item
-            = button_to "Выйти", destroy_user_session_path, 
-                        method: :delete, 
-                        class: "btn btn-link nav-link", 
-                        form_class: "d-inline"        
+            = button_to "Выйти", destroy_user_session_path,
+                        method: :delete,
+                        class: "btn btn-link nav-link",
+                        form_class: "d-inline"
         - else
           li.nav-item
             = link_to "Зарегистрироваться", new_user_registration_path, class: "nav-link"

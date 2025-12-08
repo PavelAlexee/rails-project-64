@@ -22,8 +22,10 @@ gem 'kamal', require: false
 
 gem 'thruster', require: false
 
+gem 'ancestry'
 gem 'devise'
 gem 'faker'
+gem 'simple_form'
 gem 'slim-rails'
 
 group :development, :test do
@@ -32,7 +34,9 @@ group :development, :test do
 
   gem 'sqlite3', '>= 2.1'
 
+  gem 'minitest-power_assert'
   gem 'rubocop'
+  gem 'rubocop-minitest'
   gem 'rubocop-performance'
   gem 'rubocop-rails'
   gem 'slim_lint'
@@ -44,7 +48,6 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'minitest-power_assert'
   gem 'rails-controller-testing'
   gem 'selenium-webdriver'
 end
