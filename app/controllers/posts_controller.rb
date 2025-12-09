@@ -9,6 +9,8 @@ class PostsController < ApplicationController
   def show
     @comment = @post.comments.build
     @comments = @post.comments.roots
+
+    @user_like = @post.likes.find_by(user: current_user) if user_signed_in?
   end
 
   def new
