@@ -1,10 +1,13 @@
 h1.card-title = @post.title
 p.card-text = simple_format(@post.body)
+
 hr.mt-4
 small.text-muted
   | Категория: #{@post.category.name} |
   | Автор: #{@post.creator.first_name} |
-  | Создано: #{time_ago_in_words(@post.created_at)} назад
+  | Создано: #{(@post.created_at).strftime('%d.%m.%Y')}
+
+= render 'posts/like_button', post: @post
 
 - if user_signed_in? && current_user == @post.creator
   .mt-4
@@ -32,7 +35,6 @@ small.text-muted
           - else
             span.text-muted [Удаленный пользователь]
         span.fs-6.text-muted
-          = l(comment.created_at, format: :short)
       .card-body.border-0
         p.card-text = comment.content
       - if user_signed_in?
