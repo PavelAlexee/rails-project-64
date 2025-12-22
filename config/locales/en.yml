@@ -1,4 +1,12 @@
 en:
+  activerecord:
+    errors:
+      models:
+        post_comment:
+          attribuutes:
+            content:
+              blank: 'It is forbidden to post an empty comment!'
+
   comments:
     created: 'Comment was successfully added.'
   posts:

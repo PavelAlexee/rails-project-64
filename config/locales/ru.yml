@@ -1,4 +1,12 @@
 ru:
+  activerecord:
+    errors:
+      models:
+        post_comment:
+          attribuutes:
+            content:
+              blank: 'Запрещено публиковать пустой комментарий!'
+              
   comments:
     created: 'Комментарий успешно добавлен.'
   posts:
