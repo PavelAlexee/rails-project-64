@@ -9,24 +9,24 @@
             = render "devise/shared/error_messages", resource: resource
 
             .form-floating.mb-3
-              = f.text_field :first_name, 
-                            autofocus: true, 
-                            autocomplete: "first_name", 
-                            class: "form-control", 
+              = f.text_field :first_name,
+                            autofocus: true,
+                            autocomplete: "first_name",
+                            class: "form-control",
                             id: "floatingFirstName"
               = f.label :first_name, "Имя", for: "floatingFirstName"
 
             .form-floating.mb-3
-              = f.email_field :email, 
-                            autocomplete: "email", 
-                            class: "form-control", 
+              = f.email_field :email,
+                            autocomplete: "email",
+                            class: "form-control",
                             id: "floatingEmail"
               = f.label :email, for: "floatingEmail"
 
             .form-floating.mb-3
-              = f.password_field :password, 
-                                autocomplete: "new-password", 
-                                class: "form-control", 
+              = f.password_field :password,
+                                autocomplete: "new-password",
+                                class: "form-control",
                                 id: "floatingPassword",
                                 placeholder: "Password"
               = f.label :password, "Пароль", for: "floatingPassword"
@@ -35,12 +35,11 @@
                   = "(минимум #{@minimum_password_length} знаков)"
 
             .form-floating.mb-4
-              = f.password_field :password_confirmation, 
-                                autocomplete: "new-password", 
-                                class: "form-control", 
+              = f.password_field :password_confirmation,
+                                autocomplete: "new-password",
+                                class: "form-control",
                                 id: "floatingPasswordConfirmation",
                                 placeholder: "Password confirmation"
               = f.label :password_confirmation, "Подтверждение пароля", for: "floatingPasswordConfirmation"
 
             = f.submit "Регистрация", class: "w-100 btn btn-lg btn-primary mb-3"
-            

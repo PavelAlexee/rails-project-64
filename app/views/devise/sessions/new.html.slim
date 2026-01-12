@@ -4,20 +4,20 @@
       .card.mt-5
         .card-body
           h2.h3.mb-3.fw-normal.text-center Войти
-          
+
           = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
             .form-floating.mb-3
-              = f.email_field :email, 
-                              autofocus: true, 
-                              autocomplete: "email", 
-                              class: "form-control", 
+              = f.email_field :email,
+                              autofocus: true,
+                              autocomplete: "email",
+                              class: "form-control",
                               id: "floatingInput"
               = f.label :email, for: "floatingInput"
 
             .form-floating.mb-3
-              = f.password_field :password, 
-                                autocomplete: "current-password", 
-                                class: "form-control", 
+              = f.password_field :password,
+                                autocomplete: "current-password",
+                                class: "form-control",
                                 id: "floatingPassword"
               = f.label :password, "Пароль", for: "floatingPassword"
 

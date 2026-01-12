@@ -9,43 +9,43 @@
             = render "devise/shared/error_messages", resource: resource
 
             .form-floating.mb-3
-              = f.text_field :first_name, 
-                            autofocus: true, 
-                            autocomplete: "first_name", 
-                            class: "form-control", 
+              = f.text_field :first_name,
+                            autofocus: true,
+                            autocomplete: "first_name",
+                            class: "form-control",
                             id: "floatingFirstName",
                             placeholder: "First Name",
                             value: resource.first_name
               = f.label :first_name, "Имя", for: "floatingFirstName"
 
             .form-floating.mb-3
-              = f.email_field :email, 
-                            autocomplete: "email", 
-                            class: "form-control", 
+              = f.email_field :email,
+                            autocomplete: "email",
+                            class: "form-control",
                             id: "floatingEmail",
                             placeholder: "name@example.com"
               = f.label :email, for: "floatingEmail"
 
             - if devise_mapping.confirmable? && resource.pending_reconfirmation?
               .alert.alert-warning.mb-3
-                strong Currently waiting confirmation for: 
+                strong Currently waiting confirmation for:
                 = resource.unconfirmed_email
 
             h5.mt-4.mb-3 Изменить пароль
 
             .form-floating.mb-4
-              = f.password_field :current_password, 
-                                autocomplete: "current-password", 
-                                class: "form-control", 
+              = f.password_field :current_password,
+                                autocomplete: "current-password",
+                                class: "form-control",
                                 id: "floatingCurrentPassword",
                                 placeholder: "Current Password",
                                 required: true
               = f.label :current_password, "Текущий пароль", for: "floatingCurrentPassword"
 
             .form-floating.mb-3
-              = f.password_field :password, 
-                                autocomplete: "new-password", 
-                                class: "form-control", 
+              = f.password_field :password,
+                                autocomplete: "new-password",
+                                class: "form-control",
                                 id: "floatingNewPassword",
                                 placeholder: "New Password"
               = f.label :password, "Новый пароль", for: "floatingNewPassword"
@@ -54,25 +54,23 @@
                   = "(минимум #{@minimum_password_length} знаков)"
 
             .form-floating.mb-3
-              = f.password_field :password_confirmation, 
-                                autocomplete: "new-password", 
-                                class: "form-control", 
+              = f.password_field :password_confirmation,
+                                autocomplete: "new-password",
+                                class: "form-control",
                                 id: "floatingPasswordConfirmation",
                                 placeholder: "Confirm New Password"
               = f.label :password_confirmation, "Повторите новый пароль", for: "floatingPasswordConfirmation"
-
 
             = f.submit "Изменить", class: "w-100 btn btn-lg btn-primary mb-4"
 
           .card.mt-4
             .card-body
               h3.h5.card-title Удалить мой аккаунт
-              = button_to "Удалить", 
-                         registration_path(resource_name), 
-                         data: { turbo_confirm: "Вы уверены?" }, 
-                         method: :delete, 
+              = button_to "Удалить",
+                         registration_path(resource_name),
+                         data: { turbo_confirm: "Вы уверены?" },
+                         method: :delete,
                          class: "btn btn-outline-danger"
 
           .text-center.mt-3
             = link_to "Назад", :back, class: "btn btn-outline-secondary"
-            

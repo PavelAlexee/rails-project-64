@@ -20,9 +20,9 @@ html
     body.d-flex.flex-column.h-100
       header
         = render "shared/nav"
-      
+
       main.flex-shrink-0.w-100
-        .container  
+        .container
           .container.mt-4
             - if notice
               .alert.alert-success = notice
@@ -30,7 +30,7 @@ html
               .alert.alert-danger = alert
 
           = yield
-      
+
       footer.footer.mt-auto.py-3.bg-light
         .container
           = render "shared/footer"
