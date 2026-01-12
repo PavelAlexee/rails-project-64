@@ -8,8 +8,8 @@ development:
 test:
   adapter: test
 
-# production:
-#   adapter: async
+production:
+  adapter: async
 #   connects_to:
 #     database:
 #       writing: cable
