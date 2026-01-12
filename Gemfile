@@ -13,6 +13,8 @@ gem 'stimulus-rails'
 gem 'turbo-rails'
 
 gem 'solid_cable'
+gem 'solid_cache'
+gem 'solid_queue'
 
 gem 'bootsnap', require: false
 
