@@ -1,13 +1,13 @@
 one:
   first_name: John
   email: john@example.com
-  encrypted_password: <%= User.new.send(:password_digest, 'password') %>
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   created_at: <%= Time.current %>
   updated_at: <%= Time.current %>
 
 two:
   first_name: Jane
   email: jane@example.com
-  encrypted_password: <%= User.new.send(:password_digest, 'password') %>
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   created_at: <%= Time.current %>
   updated_at: <%= Time.current %>
