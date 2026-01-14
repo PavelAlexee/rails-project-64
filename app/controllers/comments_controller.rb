@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
       redirect_to @post, notice: t('.created')
     else
       @comments = @post.comments.roots
-      render 'posts/show', status: :unprocessable_entity
+      render 'posts/show', status: :unprocessable_content
     end
   end
 
