@@ -35,8 +35,6 @@ Metrics/CyclomaticComplexity:
 
 Metrics/ClassLength:
   Max: 200
-  Exclude:
-    - 'test/**/*'
 
 Metrics/MethodLength:
   Enabled: false
