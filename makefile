@@ -9,8 +9,6 @@ test_models:
 
 test_integration:
 	bundle exec rails test test/integration
-
-lint: lint-rubocop lint-slim
 		
 lint-rubocop:
 	bundle exec rubocop
