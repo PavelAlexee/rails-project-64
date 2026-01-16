@@ -5,10 +5,10 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
     .collapse.navbar-collapse
       ul.navbar-nav.me-auto
         li.nav-item
-          = link_to "Главная", root_path, class: "nav-link"
+          = link_to 'Главная', root_path, class: 'nav-link'
           - if user_signed_in?
             li.nav-item
-              = link_to "Создать новый пост", new_post_path, class: "nav-link"
+              = link_to 'Создать новый пост', new_post_path, class: 'nav-link'
 
       ul.navbar-nav.align-items-center
         - if user_signed_in?
@@ -16,14 +16,14 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
             span.navbar-text.me-3
               | Добро пожаловать, #{current_user.first_name || current_user.email}
           li.nav-item
-            = link_to "Изменить профиль", edit_user_registration_path, class: "nav-link"
+            = link_to 'Изменить профиль', edit_user_registration_path, class: 'nav-link'
           li.nav-item
-            = button_to "Выйти", destroy_user_session_path,
+            = button_to 'Выйти', destroy_user_session_path,
                         method: :delete,
-                        class: "btn btn-link nav-link",
-                        form_class: "d-inline"
+                        class: 'btn btn-link nav-link',
+                        form_class: 'd-inline'
         - else
           li.nav-item
-            = link_to "Зарегистрироваться", new_user_registration_path, class: "nav-link"
+            = link_to 'Зарегистрироваться', new_user_registration_path, class: 'nav-link'
           li.nav-item
-            = link_to "Войти", new_user_session_path, class: "nav-link"
+            = link_to 'Войти', new_user_session_path, class: 'nav-link'

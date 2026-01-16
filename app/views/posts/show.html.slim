@@ -5,7 +5,7 @@ hr.mt-4
 small.text-muted
   | Категория: #{@post.category.name} |
   | Автор: #{@post.creator.first_name} |
-  | Создано: #{(@post.created_at).strftime('%d.%m.%Y')}
+  | Создано: #{@post.created_at.strftime('%d.%m.%Y')}
 
 = render 'posts/like_button', post: @post
 
@@ -13,7 +13,7 @@ small.text-muted
   .mt-4
     = link_to 'Редактировать пост', edit_post_path(@post.id), class: 'btn btn-outline-secondary'
 
-    = button_to "Удалить",
+    = button_to 'Удалить',
                 post_path(@post.id),
                 data: { turbo_confirm: 'Вы уверены?' },
                 method: :delete,
@@ -25,7 +25,7 @@ small.text-muted
     = simple_form_for @comment, url: post_comments_path(@post) do |f|
       = f.input :content, as: :text, label: false
       = f.input :parent_id, as: :hidden, input_html: { value: nil }
-      = f.button :submit, 'Оставить комментарий',class: 'btn-primary mb-4'
+      = f.button :submit, 'Оставить комментарий', class: 'btn-primary mb-4'
   - @comments.each do |comment|
     .card.mt-2.rounded-0 id="comment-#{comment.id}"
       .card-header.border-0
