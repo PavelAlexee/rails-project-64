@@ -17,23 +17,18 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should redirect new when not authenticated' do
-    get new_post_path
-
+  test 'should redirect destroy when not authenticated' do
+    assert_no_difference('Post.count') do
+      delete post_path(@post)
+    end
     assert_redirected_to new_user_session_path
   end
 
-  test 'should get new when authenticated' do
+  test 'should destroy post' do
     sign_in @user
-    get new_post_path
-
-    assert_response :success
-  end
-
-  test 'should build new post when authenticated' do
-    sign_in @user
-    get new_post_path
-    assert { assigns(:post).is_a?(Post) }
-    assert { assigns(:post).new_record? }
+    assert_difference('Post.count', -1) do
+      delete post_path(@post)
+    end
+    assert_redirected_to root_url(notice: 'Пост успешно удален.')
   end
 end
