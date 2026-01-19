@@ -11,7 +11,7 @@
 bundle install
 
 # Запуск линтеров
-lint-rubocop
+make lint-rubocop
 
 # Запуск тестов
 make test
