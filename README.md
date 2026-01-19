@@ -24,3 +24,14 @@ config/database.yml.example
 ```bash
 make start
 ```
+
+
+## Production
+
+Приложение развернуто и доступно онлайн:
+
+**Демо-версия:** ([https://the-blog-hub-bcp7.onrender.com](https://the-blog-hub-bcp7.onrender.com/))
+
+> Приложение размещено на бесплатном тарифе Render.
+
+> При первом обращении или после периода бездействия может потребоваться время для "пробуждения" сервера.
