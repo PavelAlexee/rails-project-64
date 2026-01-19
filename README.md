@@ -11,10 +11,7 @@
 bundle install
 
 # Запуск линтеров
-bundle exec rake ci:lint
+lint-rubocop
 
 # Запуск тестов
-bundle exec rake ci:test
-
-# Полная проверка CI
-bundle exec rake ci:all
+make test
