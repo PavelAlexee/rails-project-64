@@ -1,4 +1,4 @@
-# My Rails Application
+# My collective Rails blog
 
 
 [![Ruby CI](https://github.com/PavelAlexee/rails-project-64/actions/workflows/ci.yml/badge.svg)](https://github.com/PavelAlexee/rails-project-64/actions/workflows/ci.yml)
@@ -6,12 +6,16 @@
 
 ## Development
 
+### Установка и запуск
+
 ```bash
-# Установка зависимостей
-bundle install
+1. **Клонирование репозитория**
 
-# Запуск линтеров
-make lint-rubocop
+git clone https://github.com/PavelAlexee/rails-project-64.git
+cd rails-project-64
 
-# Запуск тестов
-make test
+2. **Отредактируйте файл под свои нужды для БД "config/database.yml.example"**
+
+3. **Установка всех зависимостей, настройка БД и запуск сервера**
+
+make start
