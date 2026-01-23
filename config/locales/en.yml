@@ -1,5 +1,8 @@
 en:
   activerecord:
+    models:
+        post_comment: 
+          content: "Комментарий"
     errors:
       models:
         post_comment:

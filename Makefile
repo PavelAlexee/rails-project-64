@@ -1,7 +1,9 @@
-start:
+setup:
 	bundle install
 	yarn install
 	rails db:create db:migrate db:seed
+
+start:
 	bin/rails s
 
 test:

@@ -11,7 +11,7 @@
           small.text-muted
             | Категория: #{post.category.name} |
             | Автор: #{post.creator.first_name} |
-            | Создано: #{((Time.current - post.created_at) / 60).to_i} минут назад
+            | Создано: #{post.created_at.strftime('%d.%m.%Y')}
           = link_to 'Читать', post, class: 'btn btn-outline-primary btn-sm'
 - else
   .alert.alert-info

@@ -29,4 +29,6 @@ jobs:
 
       - name: Run Slim-Lint
         run: bundle exec slim-lint app/views
-
+      
+      - name: Run tests
+        run: bundle exec rails test  
