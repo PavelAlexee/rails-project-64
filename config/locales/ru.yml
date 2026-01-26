@@ -2,16 +2,16 @@ ru:
   activerecord:    
     attributes:
       post_comment:
-        content: "Текст комментария"
-        user: "Пользователь"
-        post: "Пост"
-        parent_id: "Родительский комментарий"
+        content: 'Комментарий'
+        user: 'Пользователь'
+        post: 'Пост'
+        parent_id: 'Родительский комментарий'
     errors:
       models:
         post_comment:
-          attribuutes:
+          attributes:
             content:
-              blank: 'Запрещено публиковать пустой комментарий!'
+              blank: 'не должен быть пустым!'
               
   comments:
     created: 'Комментарий успешно добавлен.'

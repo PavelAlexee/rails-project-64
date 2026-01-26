@@ -6,7 +6,7 @@ class PostComment < ApplicationRecord
   belongs_to :user
   belongs_to :post
 
-  validates :content, presence: { message: 'не может быть пустым' }
+  validates :content, presence: true
 
   before_validation :set_default_ancestry
 
