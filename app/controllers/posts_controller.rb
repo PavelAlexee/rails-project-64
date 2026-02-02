@@ -36,7 +36,7 @@ class PostsController < ApplicationController
       redirect_to @post, notice: t('.created')
     else
       set_categories
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_content
     end
   end
 
@@ -45,7 +45,7 @@ class PostsController < ApplicationController
       redirect_to @post, notice: t('.updated')
     else
       set_categories
-      render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_content
     end
   end
 
