@@ -24,6 +24,7 @@ gem 'thruster', require: false
 
 gem 'ancestry'
 gem 'devise'
+gem 'dynamic_form'
 gem 'faker'
 gem 'simple_form'
 gem 'slim-rails'

@@ -1,0 +1,33 @@
+ru:
+  activerecord:
+    attributes:
+      post:
+        title: 'Заголовок'
+        body: 'Текст'
+        category: 'Категория'
+        creator: 'Автор'
+      post_comment:
+        content: 'Комментарий'
+        user: 'Пользователь'
+        post: 'Пост'
+        parent_id: 'Родительский комментарий'
+      
+      models:
+        post:
+          attributes:
+            title:
+              blank: "не может быть пустым"
+              too_short: "слишком короткий (минимум %{count} символов)"
+            body:
+              blank: "не может быть пустым"
+              too_short: "слишком короткий (минимум %{count} символов)"
+            category:
+              blank: "должна быть выбрана"
+            creator:
+              blank: "должен быть указан"
+              required: "должен быть указан"
+        
+        post_comment:
+          attributes:
+            content:
+              blank: "не может быть пустым"

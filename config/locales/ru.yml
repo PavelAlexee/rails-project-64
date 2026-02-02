@@ -1,24 +1,10 @@
 ru:
-  activerecord:    
-    attributes:
-      post_comment:
-        content: 'Комментарий'
-        user: 'Пользователь'
-        post: 'Пост'
-        parent_id: 'Родительский комментарий'
-    errors:
-      models:
-        post_comment:
-          attributes:
-            content:
-              blank: 'не должен быть пустым!'
-              
   comments:
     created: 'Комментарий успешно добавлен.'
+  
   posts:
     created: 'Пост успешно создан.'
     updated: 'Пост успешно обновлен.'
     destroyed: 'Пост успешно удален.'
     not_found: 'Пост не найден'
     no_permission: 'У вас нет прав для этого действия'
-    

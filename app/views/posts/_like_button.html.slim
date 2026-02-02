@@ -1,12 +1,11 @@
 .text-end.mt-3
-  - user_like = @post.likes.find_by(user: current_user) if user_signed_in?
   .d-inline-flex.align-items-center.gap-2
     span.me-1 = @post.likes.count
     - if !user_signed_in?
       = link_to new_user_session_path, class: 'btn btn-sm btn-outline-secondary', title: 'Войдите, чтобы поставить лайк' do
         i.bi.bi-hand-thumbs-up
-    - elsif user_like
-      = button_to post_like_path(@post, user_like),
+    - elsif @user_like
+      = button_to post_like_path(@post, @user_like),
                   method: :delete,
                   class: 'btn btn-sm btn-outline-danger',
                   form_class: 'd-inline',

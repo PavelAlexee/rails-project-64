@@ -11,10 +11,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to @post, notice: t('.created')
     else
-      flash.now[:alert] = @comment.errors.full_messages.to_sentence
-
-      @comments = @post.comments.roots
-      render 'posts/show', status: :unprocessable_content
+      redirect_to @post, alert: @comment.errors.full_messages.to_sentence
     end
   end
 

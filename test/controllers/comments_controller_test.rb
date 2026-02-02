@@ -86,17 +86,18 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
         post_comment: { content: '' }
       }
     end
-    assert_response :unprocessable_entity
+    assert_redirected_to post_path(@post)
   end
 
-  test 'should render posts/show when comment creation fails' do
+  test 'should show error flash when comment creation fails' do
     sign_in @john
     post post_comments_path(@post), params: {
       post_comment: { content: '' }
     }
 
-    assert_template 'posts/show'
-    assert_not_nil assigns(:comments)
+    assert_redirected_to post_path(@post)
+    assert_not_nil flash[:alert]
+    assert_includes flash[:alert], 'не может быть пустым'
   end
 
   test 'should handle non-existent post for create' do
@@ -106,6 +107,8 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
         post_comment: { content: 'Valid content' }
       }
     end
+
     assert_response :not_found
+    assert_match(/not found|RecordNotFound/i, response.body)
   end
 end

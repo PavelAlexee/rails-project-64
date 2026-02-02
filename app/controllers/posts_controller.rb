@@ -4,13 +4,23 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: %i[show]
   before_action :set_post, only: %i[show edit update destroy]
   before_action :check_authorization, only: %i[edit update destroy]
-  before_action :set_categories, only: %i[new edit create update]
+  before_action :set_categories, only: %i[new edit]
 
   def show
     @comment = @post.comments.build
-    @comments = @post.comments.roots
+    @comments_tree = @post.comments
+                          .includes(:user)
+                          .arrange_serializable do |parent, children|
+      {
+        comment: parent,
+        children: children,
+        user: parent.user
+      }
+    end
 
     @user_like = @post.likes.find_by(user: current_user) if user_signed_in?
+
+    @post = Post.includes(:likes, :comments).find(params[:id])
   end
 
   def new
@@ -25,7 +35,8 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to @post, notice: t('.created')
     else
-      render :new, status: :unprocessable_content
+      set_categories
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -33,7 +44,8 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to @post, notice: t('.updated')
     else
-      render :edit, status: :unprocessable_content
+      set_categories
+      render :edit, status: :unprocessable_entity
     end
   end
 

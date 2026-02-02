@@ -116,6 +116,7 @@ GEM
       warden (~> 1.2.3)
     dotenv (3.1.8)
     drb (2.2.3)
+    dynamic_form (1.2.0)
     ed25519 (1.4.0)
     erb (6.0.1)
     erubi (1.13.1)
@@ -419,6 +420,7 @@ DEPENDENCIES
   cssbundling-rails
   debug
   devise
+  dynamic_form
   faker
   jbuilder
   jsbundling-rails

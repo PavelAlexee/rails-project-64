@@ -8,7 +8,6 @@ class User < ApplicationRecord
   has_many :comments, class_name: 'PostComment', dependent: :destroy
   has_many :likes, class_name: 'PostLike', dependent: :destroy
 
-  # validates :first_name, presence: true, unless: -> { Rails.env.test? }
   validates :email, uniqueness: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 end

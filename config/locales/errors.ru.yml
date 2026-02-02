@@ -1,0 +1,18 @@
+ru:
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      blank: "не может быть пустым"
+      required: "обязателен для заполнения"
+      too_short: "слишком короткий (минимум %{count} символов)"
+      taken: "уже занят"
+      invalid: "имеет неверное значение"
+      
+  activerecord:    
+    errors:
+      template:
+        header:
+          one: "1 ошибка не позволила сохранить пост:"
+          few: "%{count} ошибки не позволили сохранить пост:"
+          many: "%{count} ошибок не позволили сохранить пост:"
+          other: "%{count} ошибки не позволили сохранить пост:"

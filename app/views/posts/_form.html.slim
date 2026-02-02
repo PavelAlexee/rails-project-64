@@ -1,4 +1,10 @@
-= form_with model: @post do |f|
+= form_with model: @post, local: true do |f|
+  - if @post.errors.any?
+    #error_explanation.alert.alert-danger
+      h5 = "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
+      ul.mb-0
+        - @post.errors.full_messages.each do |message|
+          li = message
 
   .field.mb-3
     = f.label :title, 'Заголовок', class: 'form-label'
@@ -12,5 +18,5 @@
     = f.label :body, 'Содержание', class: 'form-label'
     = f.text_area :body, rows: 10, class: 'form-control', required: true
 
-  .actions
+  .actions.mt-3
     = f.submit 'Опубликовать', class: 'btn btn-primary'
