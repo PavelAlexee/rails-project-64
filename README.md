@@ -22,6 +22,8 @@ config/database.yml.example
 3. **Установка всех зависимостей, настройка БД и запуск сервера командой**
 
 ```bash
+make setup
+
 make start
 ```
 

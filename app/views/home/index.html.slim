@@ -13,7 +13,7 @@
               | Автор: #{post.creator.first_name} |
               | Создано: #{post.created_at.strftime('%d.%m.%Y')} |
               | Понравилось: #{post.likes.count}
-          
+
             = link_to 'Читать', post, class: 'btn btn-outline-primary btn-sm'
 - else
   .alert.alert-info

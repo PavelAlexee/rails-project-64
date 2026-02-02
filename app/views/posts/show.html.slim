@@ -21,17 +21,15 @@ small.text-muted
 
 .mt-5
   h3 Комментарии (#{@post.comments.count})
-  
   - if user_signed_in?
     = simple_form_for @comment, url: post_comments_path(@post) do |f|
       = f.input :content, as: :text, label: false, placeholder: 'Ваш комментарий...'
       = f.input :parent_id, as: :hidden, input_html: { value: nil }
       = f.button :submit, 'Оставить комментарий', class: 'btn-primary mb-4'
-  
-  - @comments_tree.each do |comment_data|
-    = render 'comments/comment', 
-             comment: comment_data[:comment], 
-             children: comment_data[:children]
-  
-= link_to 'Назад', root_path, class: 'btn btn-outline-primary mt-3'
 
+  - @comments_tree.each do |comment_data|
+    = render 'comments/comment',
+             comment: comment_data[:comment],
+             children: comment_data[:children]
+
+= link_to 'Назад', root_path, class: 'btn btn-outline-primary mt-3'

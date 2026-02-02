@@ -6,10 +6,9 @@
       - else
         span.text-muted [Удаленный пользователь]
     span.fs-6.text-muted
-  
   .card-body.border-0
     p.card-text = comment.content
-  
+
   - if user_signed_in?
     .card-footer.border-0
       = link_to 'ответить', '#', class: 'fs-6 text-decoration-underline text-lowercase',
@@ -24,10 +23,10 @@
           = f.input :content, as: :text, label: false
           = f.input :parent_id, as: :hidden, input_html: { value: comment.id }
           = f.button :submit, 'Оставить комментарий', class: 'btn-primary mt-2'
-        
+
   - if children.any?
     .card-body.border-0.ps-4
       - children.each do |child_data|
-        = render 'comments/comment', 
-                 comment: child_data[:comment], 
+        = render 'comments/comment',
+                 comment: child_data[:comment],
                  children: child_data[:children]
